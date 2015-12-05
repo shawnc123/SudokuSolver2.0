@@ -27,6 +27,7 @@ public class SudokuBoard {
             	}
             	i++;
             }   
+            bufferedReader.close();
 		}
 		catch(FileNotFoundException ex) {
             System.out.println("Unable to open file '" + fileName + "'");                
