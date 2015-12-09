@@ -3,12 +3,12 @@ import java.io.Console;
 public class Main {
 	
 	public static void main(String [] args){
-		SudokuBoard board = new SudokuBoard(args[0]);
-		board.print();
-		testEliminateValuesStrategy(board);
+		testEliminateValuesStrategy();
 	}
 	
-	public static void testEliminateValuesStrategy(SudokuBoard board){
+	public static void testEliminateValuesStrategy(){
+		SudokuBoard board = new SudokuBoard("easy.pzl");
+		
 		IStrategy s = new EliminateByRowColumnBoxStrategy();
 		board = s.attempt(board);
 		assert board.board[1][8].getValue() == null;
