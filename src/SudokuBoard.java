@@ -39,6 +39,7 @@ public class SudokuBoard {
         }
 	}
 	
+	
 	public void print(){
 		for(Tile[] row : board){
 			for(Tile t : row){
@@ -46,6 +47,15 @@ public class SudokuBoard {
 			}
 			System.out.println();
 		}
+	}
+	
+	
+	public Set<Integer> getRowValues(Tile[] row){
+		Set<Integer> values = new HashSet<Integer>();
+		for(Tile tile : row){
+			values.add(tile.getValue());
+		}
+		return values;
 	}
 	
 	
@@ -58,13 +68,7 @@ public class SudokuBoard {
 	}
 
 	
-	public Set<Integer> getRowValues(int row){
-		Set<Integer> values = new HashSet<Integer>();
-		for(Tile tile : board[row]){
-			values.add(tile.getValue());
-		}
-		return values;
-	}
+
 	
 	
 	

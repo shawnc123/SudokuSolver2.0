@@ -27,6 +27,12 @@ public class Tile {
 		return value;
 	}
 	
+	public void eliminateValues(Set<Integer> values){
+		for(Integer i : values){
+			this.possibleValues.remove(i);
+		}
+	}
+	
 	public void print(){
 		if(value != null){
 			System.out.printf("%d", value);

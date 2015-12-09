@@ -1,7 +1,18 @@
+import java.util.Set;
+
 
 public class EliminateByRowColumnBox implements IStrategy{
 	
-	public SudokuBoard attempt(SudokuBoard s){
+	public SudokuBoard attempt(SudokuBoard board){
+		
+		//For each tile in each row, eliminate values
+		for(Tile[] row : board.board){
+			Set<Integer> rowValues = board.getRowValues(row);
+			
+			for(Tile tile : row){
+				tile.eliminateValues(rowValues);
+			}
+		}
 		
 		//for each tile on board
 			//for each tile in row
@@ -18,6 +29,5 @@ public class EliminateByRowColumnBox implements IStrategy{
 	}
 	
 	
-	private
 
 }
