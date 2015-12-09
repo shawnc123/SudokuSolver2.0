@@ -1,6 +1,6 @@
 
 public interface IStrategy {
 	
-	public SudokuBoard implement(SudokuBoard s);
+	public SudokuBoard attempt(SudokuBoard s);
 
 }

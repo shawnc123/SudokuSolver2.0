@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class SudokuBoard {
@@ -45,5 +47,27 @@ public class SudokuBoard {
 			System.out.println();
 		}
 	}
+	
+	
+	public Set<Integer> getColumnValues(int column){
+		Set<Integer> values = new HashSet<Integer>();
+		for(Tile[] row : board){
+			values.add(row[column].getValue());
+		}
+		return values;
+	}
+
+	
+	public Set<Integer> getRowValues(int row){
+		Set<Integer> values = new HashSet<Integer>();
+		for(Tile tile : board[row]){
+			values.add(tile.getValue());
+		}
+		return values;
+	}
+	
+	
+	
+	
 
 }
