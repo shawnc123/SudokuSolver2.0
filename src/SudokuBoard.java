@@ -25,7 +25,7 @@ public class SudokuBoard {
             while((line = bufferedReader.readLine()) != null) {
             	char[] chars = line.toCharArray();
             	for(int j = 0; j < line.length(); j++){
-            		board[i][j] = new Tile(chars[j]);
+            		board[i][j] = new Tile(chars[j], i, j);
             	}
             	i++;
             }   
@@ -67,7 +67,23 @@ public class SudokuBoard {
 		return values;
 	}
 
+	public Set<Integer> getBoxValues(int boxNumber){
+		Integer startCol = (boxNumber % 3) * 3;
+		Integer startRow = (boxNumber / 3) * 3;
+		Set<Integer> values = new HashSet<Integer>();
+		
+		for(int row = startRow; row < startRow+3; row++){
+			for(int col = startCol; col < startCol+3; col++){
+				values.add(board[row][col].getValue());
+			}
+		}
+		
+		return values;
+	}
 	
+	public Set<Integer> getBoxValues(Tile tile){
+		return getBoxValues(tile.boxNumber); 
+	}
 
 	
 	
