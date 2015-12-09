@@ -8,6 +8,7 @@ public class Main {
 	
 	public static void testEliminateValuesStrategy(){
 		SudokuBoard board = new SudokuBoard("easy.pzl");
+		board.print();
 		
 		IStrategy s = new EliminateByRowColumnBoxStrategy();
 		board = s.attempt(board);
@@ -29,6 +30,15 @@ public class Main {
 		assert board.board[7][3].getValue() == 8;
 
 		System.out.println("TEST PASSED!");
+		board.print();
+		
+		
+		//Solves easy.pzl
+		for(int i = 0; i < 10; i++){
+			board = s.attempt(board);
+		}
+		System.out.println("");
+		board.print();
 	}
 
 }

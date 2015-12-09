@@ -9,24 +9,9 @@ public class EliminateByRowColumnBoxStrategy implements IStrategy{
 	
 	public SudokuBoard attempt(SudokuBoard board){
 		
-		buildColumnMap(board);
-		buildBoxMap(board);
+		eliminateValues(board);
 		
-		for(Tile[] row : board.board){
-			Set<Integer> rowValues = board.getRowValues(row);
-			
-			Integer colIndex = 0;
-			for(Tile tile : row){
-				//For each tile in each row, eliminate values
-				tile.eliminateValues(rowValues);
-				//Eliminate values for tile's column
-				tile.eliminateValues(columnValuesMap.get(colIndex));
-				//Eliminate values for the tile in its box
-				tile.eliminateValues(boxValuesMap.get(tile.boxNumber));
-				
-				colIndex++;
-			}
-		}
+		setCompletedValues(board);
 		
 		return board;
 	}
@@ -48,5 +33,36 @@ public class EliminateByRowColumnBoxStrategy implements IStrategy{
 	}
 	
 	
+	private void eliminateValues(SudokuBoard board){
+		buildColumnMap(board);
+		buildBoxMap(board);
+		
+		for(Tile[] row : board.board){
+			Set<Integer> rowValues = board.getRowValues(row);
+			
+			Integer colIndex = 0;
+			for(Tile tile : row){
+				//For each tile in each row, eliminate values
+				tile.eliminateValues(rowValues);
+				//Eliminate values for tile's column
+				tile.eliminateValues(columnValuesMap.get(colIndex));
+				//Eliminate values for the tile in its box
+				tile.eliminateValues(boxValuesMap.get(tile.boxNumber));
+				
+				colIndex++;
+			}
+		}
+	}
+	
+	
+	private void setCompletedValues(SudokuBoard board){
+		for(Tile[] row : board.board){
+			for(Tile tile : row){
+				if(tile.possibleValues != null && tile.possibleValues.size() == 1){
+					tile.setValue((Integer)tile.possibleValues.toArray()[0]);
+				}
+			}
+		}
+	}
 
 }
