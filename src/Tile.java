@@ -28,6 +28,9 @@ public class Tile {
 	}
 	
 	public void eliminateValues(Set<Integer> values){
+		if(this.possibleValues == null){
+			return;
+		}
 		for(Integer i : values){
 			this.possibleValues.remove(i);
 		}
