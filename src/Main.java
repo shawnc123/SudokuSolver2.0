@@ -3,7 +3,8 @@ import java.io.Console;
 public class Main {
 	
 	public static void main(String [] args){
-		testEliminateValuesStrategy();
+		//testEliminateValuesStrategy();
+		testSolveMedPuzzle();
 	}
 	
 	public static void testEliminateValuesStrategy(){
@@ -43,4 +44,17 @@ public class Main {
 		
 	}
 
+	
+	public static void testSolveMedPuzzle(){
+		SudokuBoard board = new SudokuBoard("med.pzl");
+		board.print();
+		
+		IStrategy s = new EliminateByRowColumnBoxStrategy();
+		for(int i = 0; i < 100; i++){
+			board = s.attempt(board);
+		}
+		
+		System.out.println("");
+		board.print();
+	}
 }
