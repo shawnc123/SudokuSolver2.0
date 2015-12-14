@@ -3,8 +3,8 @@ import java.io.Console;
 public class Main {
 	
 	public static void main(String [] args){
-		//testEliminateValuesStrategy();
-		testSolveMedPuzzle();
+		testEliminateValuesStrategy();
+		//testSolveMedPuzzle();
 	}
 	
 	public static void testEliminateValuesStrategy(){
