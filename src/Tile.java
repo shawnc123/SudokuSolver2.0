@@ -12,7 +12,7 @@ public class Tile {
 	public Set<Integer> possibleValues;
 	
 	public Tile(){
-		possibleValues = new HashSet<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+		possibleValues = Validator.allPossibleValues();
 	} 
 	
 	public Tile(char c, Integer row, Integer column){

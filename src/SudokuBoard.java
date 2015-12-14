@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -51,16 +52,23 @@ public class SudokuBoard {
 	
 	
 	public Set<Integer> getRowValues(Tile[] row){
-		Set<Integer> values = new HashSet<Integer>();
+		return new HashSet<Integer>(getRowList(row));
+	}
+	
+	public ArrayList<Integer> getRowList(Tile[] row){
+		ArrayList<Integer> values = new ArrayList<Integer>();
 		for(Tile tile : row){
 			values.add(tile.getValue());
 		}
 		return values;
 	}
 	
-	
 	public Set<Integer> getColumnValues(int column){
-		Set<Integer> values = new HashSet<Integer>();
+		return new HashSet<Integer>(getColumnList(column));
+	}
+	
+	public ArrayList<Integer> getColumnList(int column){
+		ArrayList<Integer> values = new ArrayList<Integer>();
 		for(Tile[] row : board){
 			values.add(row[column].getValue());
 		}
@@ -68,9 +76,13 @@ public class SudokuBoard {
 	}
 
 	public Set<Integer> getBoxValues(int boxNumber){
+		return new HashSet<Integer>(getBoxList(boxNumber));
+	}
+	
+	public ArrayList<Integer> getBoxList(int boxNumber){
 		Integer startCol = (boxNumber % 3) * 3;
 		Integer startRow = (boxNumber / 3) * 3;
-		Set<Integer> values = new HashSet<Integer>();
+		ArrayList<Integer> values = new ArrayList<Integer>();
 		
 		for(int row = startRow; row < startRow+3; row++){
 			for(int col = startCol; col < startCol+3; col++){
@@ -83,6 +95,10 @@ public class SudokuBoard {
 	
 	public Set<Integer> getBoxValues(Tile tile){
 		return getBoxValues(tile.boxNumber); 
+	}
+	
+	public Boolean isCompleted(){
+		return Validator.isCompleted(this);
 	}
 
 	

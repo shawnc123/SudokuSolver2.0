@@ -12,10 +12,12 @@ public class Main {
 		
 		IStrategy s = new EliminateByRowColumnBoxStrategy();
 		board = s.attempt(board);
-		assert board.board[1][8].getValue() == null;
-		assert !board.board[1][8].possibleValues.contains(1);
-		assert !board.board[1][8].possibleValues.contains(5);
-		assert !board.board[1][8].possibleValues.contains(6);
+		
+		Tile t = board.board[1][8];
+		assert t.getValue() == null : t.getValue();
+		assert !t.possibleValues.contains(1) : t.possibleValues;
+		assert !t.possibleValues.contains(5);
+		assert !t.possibleValues.contains(6);
 		
 		assert board.board[8][8].getValue() == null;
 		assert !board.board[8][8].possibleValues.contains(5);
@@ -30,15 +32,15 @@ public class Main {
 		assert board.board[7][3].getValue() == 8;
 
 		System.out.println("TEST PASSED!");
-		board.print();
 		
-		
-		//Solves easy.pzl
-		for(int i = 0; i < 10; i++){
+		while(!board.isCompleted()){
 			board = s.attempt(board);
 		}
+		
 		System.out.println("");
+		System.out.println("DONE!");
 		board.print();
+		
 	}
 
 }
