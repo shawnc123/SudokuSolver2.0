@@ -42,12 +42,20 @@ public class SudokuBoard {
 	
 	
 	public void print(){
+		System.out.println();
 		for(Tile[] row : board){
 			for(Tile t : row){
 				t.print();
+				if(t.column == 2 || t.column == 5){
+					System.out.printf("|");
+				}
 			}
 			System.out.println();
+			if(row[0].row == 2 || row[0].row == 5){
+				System.out.println("-----------------------------");
+			}
 		}
+		System.out.println();
 	}
 	
 	

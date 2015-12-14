@@ -46,10 +46,10 @@ public class Tile {
 	
 	public void print(){
 		if(value != null){
-			System.out.printf("%d", value);
+			System.out.printf(" %d ", value);
 		}
 		else{
-			System.out.printf(" ");
+			System.out.printf("   ");
 		}
 	}
 
