@@ -20,17 +20,19 @@ public class Main {
 		assert !t.possibleValues.contains(5);
 		assert !t.possibleValues.contains(6);
 		
-		assert board.board[8][8].getValue() == null;
-		assert !board.board[8][8].possibleValues.contains(5);
-		assert !board.board[8][8].possibleValues.contains(6);
-		assert !board.board[8][8].possibleValues.contains(1);
-		assert !board.board[8][8].possibleValues.contains(9);
-		assert !board.board[8][8].possibleValues.contains(8);
-		assert !board.board[8][8].possibleValues.contains(3);
-		assert !board.board[8][8].possibleValues.contains(2);
-		assert board.board[8][8].possibleValues.size() == 2;
+		t = board.board[8][8];
+		assert t.getValue() == null;
+		assert !t.possibleValues.contains(5);
+		assert !t.possibleValues.contains(6);
+		assert !t.possibleValues.contains(1);
+		assert !t.possibleValues.contains(9);
+		assert !t.possibleValues.contains(8);
+		assert !t.possibleValues.contains(3);
+		assert !t.possibleValues.contains(2);
+		assert t.possibleValues.size() == 2;
 		
-		assert board.board[7][3].getValue() == 8;
+		t = board.board[7][3];
+		assert t.getValue() == 8;
 
 		System.out.println("TEST PASSED!");
 		
